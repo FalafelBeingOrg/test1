@@ -35,8 +35,8 @@ extents = Vector2( 32, 32 )
 1/tile_mode = 0
 1/occluder_offset = Vector2( 32, 32 )
 1/navigation_offset = Vector2( 32, 32 )
-1/shape_offset = Vector2( 115, 32 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 115, 32 )
+1/shape_offset = Vector2( 32, 32 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 32, 32 )
 1/shape = SubResource( 1 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
@@ -45,6 +45,6 @@ extents = Vector2( 32, 32 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 115, 32 )
+"shape_transform": Transform2D( 1, 0, 0, 1, 32, 32 )
 } ]
 1/z_index = 0
