@@ -15,7 +15,7 @@ var y_velo = 0
  
 func _ready():
 	anim.get_animation("walk").set_loop(true)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
  
 func _input(event):
 	if event is InputEventMouseMotion:
