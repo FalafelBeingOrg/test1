@@ -21,6 +21,9 @@ func _physics_process(delta):
 	
 	var grounded = is_on_floor()
 	
+	if is_on_ceiling():
+		y_velo = 0	
+	
 	y_velo += GRAVITY
 	if grounded and Input.is_action_just_pressed("jump"):
 		y_velo = -JUMP_FORCE
