@@ -1,17 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://undefined - Imgur.png" type="Texture" id=1]
+[ext_resource path="res://undefined - Imgur (2).png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://undefined - Imgur (4).png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 24 )
+[sub_resource type="CapsuleShape" id=1]
+height = 1.0549
 
-[sub_resource type="CircleShape2D" id=2]
-
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Sprite:region_rect")
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,77 +19,64 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Rect2( 0, 0, 64, 64 ) ]
+"values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
+resource_name = "shoot"
+length = 0.6
+step = 0.15
 tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Sprite:region_rect")
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 64, 64, 64 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "jump"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 64, 64, 64, 64 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "walk"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 0, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ), Rect2( 128, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ) ]
+"values": [ 1, 2, 3, 0 ]
 }
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Spatial"]
 
-[node name="Player" type="KinematicBody2D" parent="."]
+[node name="Player" type="KinematicBody" parent="."]
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
-position = Vector2( 0, 16 )
-shape = SubResource( 2 )
+[node name="RayCast" type="RayCast" parent="Player"]
+enabled = true
+cast_to = Vector3( 0, 0, -2000 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 0, -7 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 64, 64 )
+[node name="Camera" type="Camera" parent="Player"]
+current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-root_node = NodePath("../..")
-anims/RESET = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/jump = SubResource( 5 )
-anims/walk = SubResource( 6 )
+anims/RESET = SubResource( 2 )
+anims/shoot = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+
+[node name="Control" type="Control" parent="Player/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="Sprite" type="Sprite" parent="Player/CanvasLayer/Control"]
+position = Vector2( 200, -256 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="TextureRect" type="TextureRect" parent="Player/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -26.0
+texture = ExtResource( 3 )
