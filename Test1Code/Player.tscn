@@ -1,17 +1,65 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://undefined - Imgur.png" type="Texture" id=1]
+[ext_resource path="res://Player02Idle.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Player02Run.png" type="Texture" id=3]
+[ext_resource path="res://Player02Jump_Down.png" type="Texture" id=4]
+[ext_resource path="res://Player02Jump_Up.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 24 )
+extents = Vector2( 7, 8 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player/Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Jump_Down"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player/Jump_Down:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Jump_Up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player/Jump_Up:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Sprite:region_rect")
+tracks/0/path = NodePath("Player/Idle:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,77 +68,88 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Rect2( 0, 0, 64, 64 ) ]
+"values": [ 0 ]
 }
-
-[sub_resource type="Animation" id=4]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player/Jump_Down:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Rect2( 0, 64, 64, 64 ) ]
+"values": [ 0 ]
 }
-
-[sub_resource type="Animation" id=5]
-resource_name = "jump"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player/Jump_Up:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Rect2( 64, 64, 64, 64 ) ]
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player/Run:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "walk"
-length = 0.4
-loop = true
+[sub_resource type="Animation" id=7]
+resource_name = "Run"
+length = 0.75
+step = 0.125
 tracks/0/type = "value"
-tracks/0/path = NodePath("Player/Sprite:region_rect")
+tracks/0/path = NodePath("Player/Run:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5, 0.625 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 0, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ), Rect2( 128, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ) ]
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[node name="Player" type="Node2D"]
-
-[node name="Player" type="KinematicBody2D" parent="."]
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
-position = Vector2( 0, 16 )
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 0, -7 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 64, 64 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
+anims/Idle = SubResource( 4 )
+anims/Jump_Down = SubResource( 5 )
+anims/Jump_Up = SubResource( 6 )
 anims/RESET = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/jump = SubResource( 5 )
-anims/walk = SubResource( 6 )
+anims/Run = SubResource( 7 )
+
+[node name="Idle" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="Jump_Down" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="Jump_Up" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+
+[node name="Run" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 6
+frame = 5

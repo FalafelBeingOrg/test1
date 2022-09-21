@@ -12,3 +12,9 @@ tile_data = PoolIntArray( -196608, 1, 0, -196593, 1, 0, -131072, 1, 0, -131057, 
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 96, 151 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2( 0.25, 0.25 )
+current = true
+smoothing_enabled = true
+smoothing_speed = 10.0
