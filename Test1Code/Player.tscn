@@ -7,7 +7,7 @@
 [ext_resource path="res://Player02Jump_Up.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7, 8 )
+extents = Vector2( 7, 7.5 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "Idle"
@@ -129,6 +129,7 @@ scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
