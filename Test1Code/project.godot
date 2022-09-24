@@ -14,6 +14,10 @@ config/name="Test1Code"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[global]
+
+autoload=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
@@ -46,5 +50,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_clear_color=Color( 1, 0.980392, 1, 1 )
+environment/default_clear_color=Color( 0.0627451, 0.117647, 0.168627, 1 )
 environment/default_environment="res://default_env.tres"
