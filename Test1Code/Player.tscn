@@ -153,4 +153,3 @@ texture = ExtResource( 5 )
 [node name="Run" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 hframes = 6
-frame = 5
