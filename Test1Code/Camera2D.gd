@@ -1,21 +1,16 @@
-extends Node2D
+extends Camera2D
 
-onready var player = $"../Player"
+# Radius of the zone in the middle of the screen where the cam doesn't move
+const DEAD_ZONE = 160
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if self.transform.x.distance_to(player.transform.x) < 0.1:
-		self.transform.x = player.transform.x
-	else:
-		self.transform.x.move_toward(player.transform.x, delta * 500)
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion: # If the mouse moved...
+		var _target = event.position - get_viewport().size * 0.5	# Get the mouse position relative to the middle of the screen
+		if _target.length() < DEAD_ZONE:	# If we're in the middle (dead zone)...
+			self.position = Vector2(0,0)	# ... reset the camera to the middle (= center on player)
+		else:
+			# _target.normalized() is the direction in which to move
+			# _target.length() - DEAD_ZONE is the distance the mouse is outside of the dead zone
+			# 0.5 is an arbitrary scalar
+			self.position = _target.normalized() * (_target.length() - DEAD_ZONE) * 0.5
 

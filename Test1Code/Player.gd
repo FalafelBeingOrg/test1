@@ -22,7 +22,7 @@ var y_velo = 0
 var facing_right = false
 var time_since_grounded = 0
 var time_since_dash = DASH_COOLDOWN
-
+var canjump = true
 
 func _physics_process(delta):
 	var move_dir = 0
@@ -39,9 +39,14 @@ func _physics_process(delta):
 	
 	
 	y_velo += GRAVITY
-	if grounded and Input.is_action_just_pressed("jump"):
-		y_velo = -JUMP_FORCE
-	elif time_since_grounded < 30 and Input.is_action_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and canjump:
+		if grounded:
+			y_velo = -JUMP_FORCE
+		else:
+			time_since_grounded = 0
+			canjump = false
+			y_velo = -JUMP_FORCE
+	if !grounded and time_since_grounded < 30 and Input.is_action_pressed("jump"):
 		y_velo += -JUMP_BOOST
 	if grounded and y_velo >=5:
 		y_velo = 5
@@ -55,6 +60,7 @@ func _physics_process(delta):
 			flip()
 		
 		if grounded:
+			canjump = true
 			time_since_grounded = 0
 			if move_dir == 0:
 				play_anim("Idle")

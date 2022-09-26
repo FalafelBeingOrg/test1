@@ -219,3 +219,5 @@ texture = ExtResource( 7 )
 
 [node name="Slash" type="Sprite" parent="."]
 texture = ExtResource( 6 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
