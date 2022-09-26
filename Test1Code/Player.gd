@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MOVE_SPEED = 400
+const MOVE_SPEED = 600
 const MAX_SPEED = 1000
 const JUMP_FORCE = 600
 const GRAVITY = 75
@@ -9,7 +9,7 @@ const MAX_FALL_SPEED = 500
 const DASH_LENGTH = 10
 const DASH_COOLDOWN = 50
 const DASH_SPEED = 1000
-const CHAIN_PULL = 50
+const CHAIN_PULL = 100
 const FRICTION_AIR = 0.95		# The friction while airborne
 const FRICTION_GROUND = 0.85
 
@@ -135,6 +135,9 @@ func _physics_process(delta):
 			velocity.y += DASH_SPEED*2
 	
 	time_since_dash += 1
+	
+	if position.y > 1000:
+		die()
 		
 func flip():
 	facing_right = !facing_right
@@ -151,6 +154,9 @@ func play_anim(anim_name):
 	anim_player.play(anim_name)
 	hide_all()
 	get_node(anim_name).show()
+	
+func die():
+	get_tree().change_scene("res://World.tscn")
 	
 func hide_all():
 	Idle.hide()
