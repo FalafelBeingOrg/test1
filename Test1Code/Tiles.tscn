@@ -1,34 +1,30 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://grass-1.png" type="Texture" id=1]
-[ext_resource path="res://DIrt-1.png" type="Texture" id=2]
+[ext_resource path="res://CYBERPUNK-Dirt-1.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
 [node name="Tiles" type="Node2D"]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 332, 0 )
 scale = Vector2( 4, 4 )
-
-[node name="Sprite2" type="Sprite" parent="Node2D"]
-position = Vector2( 83, 0 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 16, 16 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Sprite2"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Sprite2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Sprite2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/StaticBody2D2"]
 shape = SubResource( 1 )
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
-
-[node name="Sprite" type="Sprite" parent="Node2D2"]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 16, 16 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D2/Sprite"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/Sprite/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
 shape = SubResource( 1 )
