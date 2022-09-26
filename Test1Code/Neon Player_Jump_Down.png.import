@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player02Jump_Up.png-364fe5dad9e61b2903ac5e0fa9e293fd.stex"
+path="res://.import/Neon Player_Jump_Down.png-2ee20fdd34ae800bea18d0e24bb75d58.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player02Jump_Up.png"
-dest_files=[ "res://.import/Player02Jump_Up.png-364fe5dad9e61b2903ac5e0fa9e293fd.stex" ]
+source_file="res://Neon Player_Jump_Down.png"
+dest_files=[ "res://.import/Neon Player_Jump_Down.png-2ee20fdd34ae800bea18d0e24bb75d58.stex" ]
 
 [params]
 

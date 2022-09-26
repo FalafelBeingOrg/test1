@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player02Run.png-aff985aeb199682c0cbf5406fc91714d.stex"
+path="res://.import/Neon Player_Dash.png-f17cdbda07b3acb51710db3ec0567317.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player02Run.png"
-dest_files=[ "res://.import/Player02Run.png-aff985aeb199682c0cbf5406fc91714d.stex" ]
+source_file="res://Neon Player_Dash.png"
+dest_files=[ "res://.import/Neon Player_Dash.png-f17cdbda07b3acb51710db3ec0567317.stex" ]
 
 [params]
 
