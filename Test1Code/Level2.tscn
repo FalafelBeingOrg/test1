@@ -1,9 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://thief-1.png" type="Texture" id=3]
 [ext_resource path="res://Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://light.png" type="Texture" id=5]
+[ext_resource path="res://Lighting.gd" type="Script" id=6]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.000629425, 0.0416957, 0.161133, 1, 0.96297, 0.67625, 0.989258, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Environment" id=4]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_intensity = 0.93
+glow_strength = 1.02
+glow_bloom = 0.06
+glow_blend_mode = 1
+adjustment_enabled = true
+adjustment_saturation = 0.86
+adjustment_color_correction = SubResource( 3 )
 
 [node name="World" type="Node2D"]
 
@@ -18,6 +43,22 @@ tile_data = PoolIntArray( -786526, 0, 0, -786525, 0, 0, -786524, 0, 0, -786523, 
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 96, 32 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+modulate = Color( 1, 0, 0.921569, 1 )
+material = SubResource( 1 )
+scale = Vector2( 1.25, 1.25 )
+z_index = 100
+texture = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="Player/Sprite"]
+modulate = Color( 1, 0, 0.921569, 1 )
+material = SubResource( 1 )
+position = Vector2( -4.76837e-07, 0 )
+scale = Vector2( 0.32, 0.32 )
+z_index = 100
+texture = ExtResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2( 0.25, 0.25 )
@@ -36,3 +77,12 @@ motion_mirroring = Vector2( 4800, 0 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2( 5, 5 )
 texture = ExtResource( 3 )
+
+[node name="CanvasModulate2" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer"]
+color = Color( 0.751447, 0.656891, 0.800781, 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.751447, 0.656891, 0.800781, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
