@@ -85,6 +85,9 @@ func _physics_process(delta):
 			velocity.y = 5		# gravity doesn't make this number huge
 	elif is_on_ceiling() and velocity.y <= -5:	# Same on ceilings
 		velocity.y = -5
+		
+	if is_on_wall():
+		velocity.x = 0
 	
 	if Input.is_action_just_pressed("jump") and canjump:
 		if grounded:
@@ -130,9 +133,9 @@ func _physics_process(delta):
 		elif walk < 0:
 			velocity.x -= DASH_SPEED
 		elif Input.is_action_pressed("jump"):
-			velocity.y -= DASH_SPEED*0.5
+			velocity.y -= DASH_SPEED
 		else:
-			velocity.y += DASH_SPEED*2
+			velocity.y += DASH_SPEED
 	
 	time_since_dash += 1
 	
