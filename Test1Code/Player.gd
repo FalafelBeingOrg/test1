@@ -159,7 +159,7 @@ func play_anim(anim_name):
 	get_node(anim_name).show()
 	
 func die():
-	get_tree().change_scene("res://World.tscn")
+	get_tree().reload_current_scene()
 	
 func hide_all():
 	Idle.hide()
