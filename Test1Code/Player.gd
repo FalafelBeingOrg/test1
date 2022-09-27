@@ -104,9 +104,9 @@ func _physics_process(delta):
 		velocity.y = MAX_FALL_SPEED
 		
 	if time_since_dash >= DASH_LENGTH:
-		if facing_right and velocity.x > 0:
+		if facing_right and walk > 0:
 			flip()
-		if !facing_right and velocity.x < 0:
+		if !facing_right and walk < 0:
 			flip()
 		
 		if grounded:
