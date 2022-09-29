@@ -38,7 +38,10 @@ func _input(event: InputEvent) -> void:
 			# We released the mouse -> release()
 			$Chain.release()
 
+
+
 func _physics_process(delta):
+	
 	var walk = (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * MOVE_SPEED
 
 	move_and_slide(velocity, Vector2(0, -1))
@@ -168,3 +171,9 @@ func hide_all():
 	Run.hide()
 	Dash.hide()
 	Slash.hide()
+
+
+func _on_Area2D_body_entered(body):
+	print("player entered body: " + body.name.trim_prefix("@"))
+	if body.name.trim_prefix("@").begins_with("Bullet"):
+		die()
