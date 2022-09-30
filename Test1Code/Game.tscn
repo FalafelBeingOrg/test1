@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://CrimsonPro-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Button1.gd" type="Script" id=2]
 [ext_resource path="res://TextEdit.gd" type="Script" id=3]
+[ext_resource path="res://Button2.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
@@ -19,18 +20,72 @@ custom_colors/function_color = Color( 1, 1, 1, 1 )
 custom_colors/background_color = Color( 0.0666667, 0.0117647, 0.117647, 1 )
 custom_colors/number_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "hello"
+text = "hello
+abc -> def
+agdsa"
 syntax_highlighting = true
 show_line_numbers = true
 draw_tabs = true
 minimap_draw = true
 script = ExtResource( 3 )
 
-[node name="Button" type="Button" parent="TextEdit"]
-margin_left = 934.0
-margin_top = 510.0
-margin_right = 984.0
-margin_bottom = 560.0
+[node name="Button1" type="Button" parent="TextEdit"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = -50.0
+margin_bottom = -50.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+text = "crd"
 script = ExtResource( 2 )
+
+[node name="Button2" type="Button" parent="TextEdit"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -100.0
+margin_right = -100.0
+margin_bottom = -50.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "sv"
+script = ExtResource( 4 )
+
+[node name="Button3" type="Button" parent="TextEdit"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -100.0
+margin_right = -150.0
+margin_bottom = -50.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "ld"
+script = ExtResource( 4 )
+
+[node name="Button4" type="Button" parent="TextEdit"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -250.0
+margin_top = -100.0
+margin_right = -200.0
+margin_bottom = -50.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "ser"
+script = ExtResource( 4 )
+
+[connection signal="pressed" from="TextEdit/Button1" to="TextEdit" method="_on_Button1_pressed"]
+[connection signal="pressed" from="TextEdit/Button2" to="TextEdit" method="_on_Button2_pressed"]
+[connection signal="pressed" from="TextEdit/Button3" to="TextEdit" method="_on_Button3_pressed"]
+[connection signal="pressed" from="TextEdit/Button4" to="TextEdit" method="_on_Button4_pressed"]
