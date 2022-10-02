@@ -17,6 +17,21 @@ func _ready():
 	add_keyword_color(operator, Color(0.925781, 0.014465, 0.014465))
 	
 func _process(delta: float) -> void:
+	if Input.is_action_pressed("ctrl"):
+		print("ctrl pressed")
+		if Input.is_action_just_pressed("save"):
+			save(text)
+		if Input.is_action_just_pressed("load"):
+			text = load_file()
+		if Input.is_action_just_pressed("card"):
+			var card = card_scene.instance()
+			add_child(card)
+			save(text)
+		if Input.is_action_just_pressed("search"):
+			save(text)
+			var search = search_scene.instance()
+			add_child(search)
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene("res://Game.tscn")
 	lines.clear()
