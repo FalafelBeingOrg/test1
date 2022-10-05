@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://CrimsonPro-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Button1.gd" type="Script" id=2]
 [ext_resource path="res://TextEdit.gd" type="Script" id=3]
 [ext_resource path="res://Button2.gd" type="Script" id=4]
+[ext_resource path="res://FileDialogsv.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
@@ -85,7 +86,25 @@ size_flags_vertical = 0
 text = "ser"
 script = ExtResource( 4 )
 
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+window_title = "Open a File"
+mode = 0
+access = 1
+show_hidden_files = true
+script = ExtResource( 5 )
+
+[node name="FileDialogsv" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+access = 1
+script = ExtResource( 5 )
+
+[connection signal="refresh" from="TextEdit" to="FileDialogsv" method="_on_TextEdit_refresh"]
 [connection signal="pressed" from="TextEdit/Button1" to="TextEdit" method="_on_Button1_pressed"]
 [connection signal="pressed" from="TextEdit/Button2" to="TextEdit" method="_on_Button2_pressed"]
 [connection signal="pressed" from="TextEdit/Button3" to="TextEdit" method="_on_Button3_pressed"]
 [connection signal="pressed" from="TextEdit/Button4" to="TextEdit" method="_on_Button4_pressed"]
+[connection signal="file_selected" from="FileDialog" to="TextEdit" method="_on_FileDialog_file_selected"]
+[connection signal="file_selected" from="FileDialogsv" to="TextEdit" method="_on_FileDialogsv_file_selected"]
