@@ -21,12 +21,10 @@ custom_colors/function_color = Color( 1, 1, 1, 1 )
 custom_colors/background_color = Color( 0.0666667, 0.0117647, 0.117647, 1 )
 custom_colors/number_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "hello
-abc -> def
-agdsa"
 syntax_highlighting = true
 show_line_numbers = true
 draw_tabs = true
+wrap_enabled = true
 minimap_draw = true
 script = ExtResource( 3 )
 

@@ -13,8 +13,6 @@ config_version=4
 config/name="IDE"
 run/main_scene="res://Game.tscn"
 config/use_hidden_project_data_directory=false
-config/use_custom_user_dir=true
-config/custom_user_dir_name="hello"
 config/icon="res://icon.png"
 
 [gui]
