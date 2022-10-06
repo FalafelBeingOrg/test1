@@ -27,10 +27,11 @@ func _process(delta):
 		pos = 0
 	print(Text.befores)
 	
-	if is_flipped:
-		text = Text.afters[pos]
-	else:
-		text = Text.befores[pos]
+	if Text.befores.size() > 0:
+		if is_flipped:
+			text = Text.afters[pos]
+		else:
+			text = Text.befores[pos]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass

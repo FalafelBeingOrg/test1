@@ -1,6 +1,7 @@
 extends TextEdit
 
-const operator = "->"
+const operator = ">"
+
 
 onready var Dialog = $"/root/Game/FileDialog"
 onready var DialogSV = $"/root/Game/FileDialogsv"
@@ -14,13 +15,20 @@ var after
 var before
 var load_path ="user://save.txt"
 var SVContent = ""
-
+var svfile_path ="user://save.save"
 
 signal refresh
 
 func _ready():
-	load_file()
-	add_keyword_color(operator, Color(0.925781, 0.014465, 0.014465))
+	var svfile = File.new()
+	svfile.open(svfile_path, File.READ)
+	load_path = svfile.get_as_text()
+	svfile.close()
+	if load_path != "":
+		var file = File.new()
+		file.open(load_path, File.READ)
+		text = file.get_as_text()
+		file.close()
 	
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ctrl"):
@@ -59,7 +67,6 @@ func _process(delta: float) -> void:
 func _on_Button1_pressed():
 	var card = card_scene.instance()
 	add_child(card)
-	save(text)
 
 
 
@@ -85,7 +92,6 @@ func load_file():
 
 
 func _on_Button4_pressed() -> void:
-	save(text)
 	var search = search_scene.instance()
 	add_child(search)
 
@@ -98,6 +104,10 @@ func _on_FileDialog_file_selected(path):
 
 
 func _on_FileDialogsv_file_selected(path):
+	var svfile = File.new()
+	svfile.open(svfile_path, File.WRITE)
+	svfile.store_string(path)
+	svfile.close()
 	var file = File.new()
 	file.open(path, File.WRITE)
 	file.store_string(SVContent)
