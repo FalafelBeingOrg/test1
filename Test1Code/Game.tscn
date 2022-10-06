@@ -89,14 +89,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 window_title = "Open a File"
 mode = 0
-access = 1
+access = 2
 show_hidden_files = true
 script = ExtResource( 5 )
 
 [node name="FileDialogsv" type="FileDialog" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-access = 1
+access = 2
 script = ExtResource( 5 )
 
 [connection signal="refresh" from="TextEdit" to="FileDialogsv" method="_on_TextEdit_refresh"]
