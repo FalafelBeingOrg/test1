@@ -1,13 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://CrimsonPro-VariableFont_wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Montserrat-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Button1.gd" type="Script" id=2]
 [ext_resource path="res://TextEdit.gd" type="Script" id=3]
 [ext_resource path="res://Button2.gd" type="Script" id=4]
 [ext_resource path="res://FileDialogsv.gd" type="Script" id=5]
+[ext_resource path="res://Button_styleboxflat.tres" type="StyleBox" id=6]
+[ext_resource path="res://Button_styleboxflat_pressed.tres" type="StyleBox" id=7]
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 1 )
 
 [node name="Game" type="Control"]
@@ -17,12 +31,13 @@ anchor_bottom = 1.0
 [node name="TextEdit" type="TextEdit" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/function_color = Color( 1, 1, 1, 1 )
-custom_colors/background_color = Color( 0, 0, 0, 1 )
-custom_colors/number_color = Color( 1, 1, 1, 1 )
+custom_colors/code_folding_color = Color( 0, 0, 0, 1 )
+custom_colors/function_color = Color( 1, 1, 0.996078, 1 )
+custom_colors/font_color = Color( 1, 1, 0.996078, 1 )
+custom_colors/background_color = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/number_color = Color( 1, 1, 0.996078, 1 )
 custom_fonts/font = SubResource( 2 )
 syntax_highlighting = true
-show_line_numbers = true
 draw_tabs = true
 wrap_enabled = true
 minimap_draw = true
@@ -39,7 +54,18 @@ margin_right = -50.0
 margin_bottom = -50.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "crd"
+custom_colors/font_color_disabled = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_focus = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_hover = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_pressed = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+text = "cards"
 script = ExtResource( 2 )
 
 [node name="Button2" type="Button" parent="TextEdit"]
@@ -47,13 +73,24 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -150.0
+margin_left = -160.0
 margin_top = -100.0
-margin_right = -100.0
+margin_right = -110.0
 margin_bottom = -50.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "sv"
+custom_colors/font_color_disabled = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_focus = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_hover = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_pressed = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+text = "save"
 script = ExtResource( 4 )
 
 [node name="Button3" type="Button" parent="TextEdit"]
@@ -61,13 +98,24 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -200.0
+margin_left = -220.0
 margin_top = -100.0
-margin_right = -150.0
+margin_right = -170.0
 margin_bottom = -50.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "ld"
+custom_colors/font_color_disabled = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_focus = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_hover = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_pressed = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+text = "load"
 script = ExtResource( 4 )
 
 [node name="Button4" type="Button" parent="TextEdit"]
@@ -75,13 +123,24 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -250.0
+margin_left = -280.0
 margin_top = -100.0
-margin_right = -200.0
+margin_right = -230.0
 margin_bottom = -50.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "ser"
+custom_colors/font_color_disabled = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_focus = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_hover = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_colors/font_color_pressed = Color( 0.137255, 0.160784, 0.27451, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+text = "search"
 script = ExtResource( 4 )
 
 [node name="FileDialog" type="FileDialog" parent="."]

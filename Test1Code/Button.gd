@@ -1,6 +1,7 @@
 extends Button
 
 onready var Text = $"/root/Game/TextEdit"
+onready var Panel2 = get_parent().get_node("Panel2")
 
 var pos = 0
 var is_flipped = false
@@ -30,8 +31,10 @@ func _process(delta):
 	if Text.befores.size() > 0:
 		if is_flipped:
 			text = Text.afters[pos]
+			Panel2.visible = true
 		else:
 			text = Text.befores[pos]
+			Panel2.visible = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass

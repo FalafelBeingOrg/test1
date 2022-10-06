@@ -1,12 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://CrimsonPro-VariableFont_wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Montserrat-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://SearchEdit.gd" type="Script" id=2]
 [ext_resource path="res://LineEditGrab.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.721569, 0.756863, 0.92549, 1 )
+
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.933333, 0.733333, 0.764706, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.933333, 0.733333, 0.764706, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.933333, 0.733333, 0.764706, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
@@ -19,6 +30,7 @@ anchor_bottom = 1.0
 [node name="a" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
 
 [node name="b" type="MarginContainer" parent="a"]
 anchor_right = 1.0
@@ -34,15 +46,25 @@ margin_bottom = 520.0
 
 [node name="LineEdit" type="LineEdit" parent="a/b/c"]
 margin_right = 944.0
-margin_bottom = 44.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.0705882, 0.0862745, 0.160784, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/read_only = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 script = ExtResource( 3 )
 
 [node name="TextEdit" type="TextEdit" parent="a/b/c"]
-margin_top = 56.0
+margin_top = 33.0
 margin_right = 944.0
 margin_bottom = 520.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/function_color = Color( 1, 1, 0.996078, 1 )
+custom_colors/font_color = Color( 1, 1, 0.980392, 1 )
+custom_colors/background_color = Color( 0.0705882, 0.0862745, 0.160784, 1 )
+custom_colors/number_color = Color( 1, 1, 0.996078, 1 )
+custom_colors/font_color_readonly = Color( 1, 1, 0.980392, 1 )
 custom_fonts/font = SubResource( 2 )
+text = "Hello"
 readonly = true
+syntax_highlighting = true
 script = ExtResource( 2 )
