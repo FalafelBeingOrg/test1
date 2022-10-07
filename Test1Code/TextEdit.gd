@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 		lines.append(line)
 	
 	for i in lines:
-		if i.find(operator) != -1:
+		if i.findn(operator) != -1:
 			result = i.find(operator)
 			after = i.substr(result+operator.length(), i.length()).trim_prefix(" ").trim_suffix(" ")
 			before = i.substr(0, result).trim_prefix(" ").trim_suffix(" ")

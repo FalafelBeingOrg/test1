@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	for i in Text.befores:
 		if line_edit.text == "":
 			print("line edit ''")
-		if i.find(line_edit.text) != -1 or line_edit.text == "":
+		if i.findn(line_edit.text) != -1 or line_edit.text == "":
 			text = text + "\n" + Text.befores[b] + "\n" + Text.afters[b]
 			found = true
 		b += 1
