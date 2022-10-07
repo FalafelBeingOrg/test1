@@ -20,15 +20,7 @@ var svfile_path ="user://save.save"
 signal refresh
 
 func _ready():
-	var svfile = File.new()
-	svfile.open(svfile_path, File.READ)
-	load_path = svfile.get_as_text()
-	svfile.close()
-	if load_path != "":
-		var file = File.new()
-		file.open(load_path, File.READ)
-		text = file.get_as_text()
-		file.close()
+	ldNoPopup()
 	
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ctrl"):
@@ -38,11 +30,11 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("load"):
 			load_file()
 		if Input.is_action_just_pressed("card"):
+			svNoPopup(text)
 			var card = card_scene.instance()
 			add_child(card)
-			save(text)
 		if Input.is_action_just_pressed("search"):
-			save(text)
+			svNoPopup(text)
 			var search = search_scene.instance()
 			add_child(search)
 	
@@ -65,6 +57,7 @@ func _process(delta: float) -> void:
 	
 			
 func _on_Button1_pressed():
+	svNoPopup(text)
 	var card = card_scene.instance()
 	add_child(card)
 
@@ -87,11 +80,31 @@ func load_file():
 	Dialog.popup()
 	emit_signal("refresh")
 	
+func svNoPopup(content):
+	var svfile = File.new()
+	svfile.open(svfile_path, File.READ)
+	load_path = svfile.get_as_text()
+	svfile.close()
+	if load_path != "":
+		var file = File.new()
+		file.open(load_path, File.WRITE)
+		file.store_string(content)
+		file.close()
 
-
+func ldNoPopup():
+	var svfile = File.new()
+	svfile.open(svfile_path, File.READ)
+	load_path = svfile.get_as_text()
+	svfile.close()
+	if load_path != "":
+		var file = File.new()
+		file.open(load_path, File.READ)
+		text = file.get_as_text()
+		file.close()
 
 
 func _on_Button4_pressed() -> void:
+	svNoPopup(text)
 	var search = search_scene.instance()
 	add_child(search)
 

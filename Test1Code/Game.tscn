@@ -31,14 +31,16 @@ anchor_bottom = 1.0
 [node name="TextEdit" type="TextEdit" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/code_folding_color = Color( 0, 0, 0, 1 )
 custom_colors/function_color = Color( 1, 1, 0.996078, 1 )
 custom_colors/font_color = Color( 1, 1, 0.996078, 1 )
+custom_colors/line_number_color = Color( 0.933333, 0.733333, 0.764706, 1 )
 custom_colors/background_color = Color( 0.137255, 0.160784, 0.27451, 1 )
 custom_colors/number_color = Color( 1, 1, 0.996078, 1 )
 custom_fonts/font = SubResource( 2 )
 syntax_highlighting = true
+show_line_numbers = true
 draw_tabs = true
+draw_spaces = true
 wrap_enabled = true
 minimap_draw = true
 script = ExtResource( 3 )
