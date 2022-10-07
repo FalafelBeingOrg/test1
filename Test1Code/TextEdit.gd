@@ -16,6 +16,7 @@ var before
 var load_path ="user://save.txt"
 var SVContent = ""
 var svfile_path ="user://save.save"
+var isfocused = true
 
 signal refresh
 
@@ -23,6 +24,11 @@ func _ready():
 	ldNoPopup()
 	
 func _process(delta: float) -> void:
+	if !isfocused:
+		grab_focus()
+		isfocused = true
+	if Input.is_action_pressed("ui_cancel"):
+		grab_focus()
 	if Input.is_action_pressed("ctrl"):
 		print("ctrl pressed")
 		if Input.is_action_just_pressed("save"):
@@ -114,7 +120,7 @@ func _on_FileDialog_file_selected(path):
 	file.open(path, File.READ)
 	text = file.get_as_text()
 	file.close()
-
+	isfocused = false
 
 func _on_FileDialogsv_file_selected(path):
 	var svfile = File.new()
@@ -125,3 +131,4 @@ func _on_FileDialogsv_file_selected(path):
 	file.open(path, File.WRITE)
 	file.store_string(SVContent)
 	file.close()
+	isfocused = false
