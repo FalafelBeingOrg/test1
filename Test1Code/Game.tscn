@@ -171,7 +171,6 @@ rect_min_size = Vector2( 150, 52.5 )
 window_title = "Open a File"
 mode = 0
 access = 2
-show_hidden_files = true
 script = ExtResource( 5 )
 
 [node name="FileDialogsv" type="FileDialog" parent="."]
