@@ -22,6 +22,7 @@ signal refresh
 
 func _ready():
 	ldNoPopup()
+	add_color_region(operator, "/n", Color(0.72,0.76,0.93,1),true);
 	
 func _process(delta: float) -> void:
 	if !isfocused:
