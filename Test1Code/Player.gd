@@ -1,11 +1,15 @@
 extends KinematicBody2D
 
 onready var anim = $AnimationPlayer
+onready var area = $Area2D
+onready var ladder = get_node("/root/World/Ladder")
 
 const MOVE_SPEED = 100
 const JUMP_FORCE = 200
+const CLIMB_FORCE = 40
 const GRAVITY = 1000
 
+var is_on_ladder = false
 var velocity := Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
@@ -30,7 +34,14 @@ func _physics_process(delta: float) -> void:
 
 	# apply gravity
 	# player always has downward velocity
-	velocity.y += GRAVITY * delta
+	if(!is_on_ladder):
+		velocity.y += GRAVITY * delta
+	else:
+		velocity.y = 0
+		if Input.is_action_pressed("jump"):
+			velocity.y -= CLIMB_FORCE
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += CLIMB_FORCE
 	# actually move the player
 	velocity = move_and_slide(velocity, Vector2.UP)
 
@@ -40,3 +51,14 @@ func _physics_process(delta: float) -> void:
 func play_anim(animation):
 	if(!anim.get_current_animation() == animation):
 		anim.play(animation)
+
+
+
+
+func _on_Area2D_body_entered(body):
+	if (body == ladder):
+		is_on_ladder = true
+
+func _on_Area2D_body_exited(body):
+	if (body == ladder):
+		is_on_ladder = false
