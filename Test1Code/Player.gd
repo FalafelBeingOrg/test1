@@ -2,7 +2,9 @@ extends KinematicBody2D
 
 onready var anim = $AnimationPlayer
 onready var area = $Area2D
+onready var exit = get_node("/root/World/Exit")
 onready var ladder = get_node("/root/World/Ladder")
+onready var level_manager = get_node("/root/LevelManager")
 
 const MOVE_SPEED = 100
 const JUMP_FORCE = 200
@@ -58,6 +60,9 @@ func play_anim(animation):
 func _on_Area2D_body_entered(body):
 	if (body == ladder):
 		is_on_ladder = true
+	if (body == exit):
+		level_manager.next_level()
+	
 
 func _on_Area2D_body_exited(body):
 	if (body == ladder):
