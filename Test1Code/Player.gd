@@ -22,13 +22,10 @@ func _physics_process(delta: float) -> void:
 	
 	# reset horizontal velocity
 	velocity.x = 0
-
 	# set horizontal velocity
 	do_anim()
 	
 	do_movement()
-
-
 	# apply gravity
 	# player always has downward velocity
 	if(!is_on_ladder):
@@ -41,6 +38,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y += CLIMB_FORCE
 	# actually move the player
 	velocity = move_and_slide(velocity, Vector2.UP)
+	
 	check_flip()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
