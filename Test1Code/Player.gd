@@ -5,18 +5,27 @@ onready var area = $Area2D
 onready var exit = get_node("/root/World/Exit")
 onready var ladder = get_node("/root/World/Ladder")
 onready var level_manager = get_node("/root/LevelManager")
+onready var bullet := preload("res://Bullet.tscn")
 onready var sprite = $Sprite
 
 const MOVE_SPEED = 100
 const JUMP_FORCE = 200
 const CLIMB_FORCE = 40
 const GRAVITY = 1000
+const TIME_TO_SHOOT = 10
 
+var time_since_shot = TIME_TO_SHOOT
 var is_on_ladder = false
+var is_on_door = false
 var velocity := Vector2.ZERO
 var is_facing_right = true
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("shoot"):
+		try_shoot()
+	
+	if Input.is_action_just_pressed("jump") and is_on_door:
+		level_manager.next_level()
 	if(position.y > 100):
 		get_tree().reload_current_scene()
 	
@@ -61,6 +70,15 @@ func do_anim():
 		play_anim("Jump_Up")
 	else:
 		play_anim("Jump_Down")
+		
+func create_bullet():
+	var bullet_instance = bullet.instance()
+	get_node("/root/World").add_child(bullet_instance)
+	bullet_instance.position = position
+	if (is_facing_right):
+		bullet_instance.dir = 1
+	else:
+		bullet_instance.dir = -1
 
 func do_movement():
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
@@ -77,9 +95,17 @@ func _on_Area2D_body_entered(body):
 	if (body == ladder):
 		is_on_ladder = true
 	if (body == exit):
-		level_manager.next_level()
+		is_on_door = true
 	
 
 func _on_Area2D_body_exited(body):
 	if (body == ladder):
 		is_on_ladder = false
+	if (body == exit):
+		is_on_door = false
+		
+func try_shoot():
+	time_since_shot += 1
+	if time_since_shot >= TIME_TO_SHOOT:
+		time_since_shot = 0
+		create_bullet()
