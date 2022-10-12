@@ -3,6 +3,7 @@ extends KinematicBody2D
 const SPEED = 250
 
 onready var level_handler = get_node("/root/LevelHandler")
+onready var area = $Area2D
 
 var movement := Vector2.ZERO
 
@@ -32,3 +33,9 @@ func die():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
+
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	print("a")
+	if body.get_parent().name == "RainSpawner":
+		die()
