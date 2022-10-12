@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://TitleFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Label.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.729412, 0.901961, 0.894118, 1 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.137255, 0.160784, 0.27451, 1 )
@@ -13,6 +16,7 @@ anchor_bottom = 1.0
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 anchor_right = 1.0
@@ -29,6 +33,7 @@ margin_bottom = 1000.0
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 margin_right = 1840.0
 margin_bottom = 47.0
+custom_colors/font_color = Color( 0.137255, 0.160784, 0.27451, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "Maelstrom"
 align = 1
@@ -39,6 +44,11 @@ script = ExtResource( 2 )
 margin_top = 51.0
 margin_right = 1840.0
 margin_bottom = 98.0
+custom_colors/font_color_disabled = Color( 0.729412, 0.901961, 0.894118, 1 )
+custom_colors/font_color_focus = Color( 0.729412, 0.901961, 0.894118, 1 )
+custom_colors/font_color = Color( 0.729412, 0.901961, 0.894118, 1 )
+custom_colors/font_color_hover = Color( 0.729412, 0.901961, 0.894118, 1 )
+custom_colors/font_color_pressed = Color( 0.729412, 0.901961, 0.894118, 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
