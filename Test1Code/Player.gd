@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_door:
 		level_manager.next_level()
 	if(position.y > 100):
-		get_tree().reload_current_scene()
+		die()
 	
 	# reset horizontal velocity
 	velocity.x = 0
@@ -96,14 +96,19 @@ func _on_Area2D_body_entered(body):
 		is_on_ladder = true
 	if (body == exit):
 		is_on_door = true
-	
+	if (body.name == "Enemy"):
+		die()
 
 func _on_Area2D_body_exited(body):
 	if (body == ladder):
 		is_on_ladder = false
 	if (body == exit):
 		is_on_door = false
-		
+
+
+func die():
+	get_tree().reload_current_scene()
+
 func try_shoot():
 	time_since_shot += 1
 	if time_since_shot >= TIME_TO_SHOOT:
